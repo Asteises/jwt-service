@@ -1,4 +1,4 @@
-package org.sadtech.example.jwt.server.auth;
+package ru.asteises.jwt.server.auth;
 
 import lombok.Getter;
 import lombok.Setter;

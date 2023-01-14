@@ -1,9 +1,9 @@
-package org.sadtech.example.jwt.server.service;
+package ru.asteises.jwt.server.service;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.sadtech.example.jwt.server.enums.Roles;
-import org.sadtech.example.jwt.server.role.User;
+import ru.asteises.jwt.server.enums.Roles;
+import ru.asteises.jwt.server.role.User;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;

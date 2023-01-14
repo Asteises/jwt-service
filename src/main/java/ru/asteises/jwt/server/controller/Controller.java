@@ -1,4 +1,4 @@
-package org.sadtech.example.jwt.server.controller;
+package ru.asteises.jwt.server.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

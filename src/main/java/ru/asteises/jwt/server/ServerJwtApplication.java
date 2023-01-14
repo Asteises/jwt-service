@@ -1,4 +1,4 @@
-package ru.asteises.serverjwt;
+package ru.asteises.jwt.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

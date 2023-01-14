@@ -1,10 +1,10 @@
-package org.sadtech.example.jwt.server.role;
+package ru.asteises.jwt.server.role;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.sadtech.example.jwt.server.enums.Roles;
+import ru.asteises.jwt.server.enums.Roles;
 
 import java.util.Set;
 

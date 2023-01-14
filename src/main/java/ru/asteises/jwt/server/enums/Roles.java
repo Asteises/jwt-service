@@ -1,4 +1,4 @@
-package org.sadtech.example.jwt.server.enums;
+package ru.asteises.jwt.server.enums;
 
 import org.springframework.security.core.GrantedAuthority;
 
