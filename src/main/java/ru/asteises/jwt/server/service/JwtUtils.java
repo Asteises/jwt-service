@@ -4,6 +4,7 @@ import io.jsonwebtoken.Claims;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Role;
+import ru.asteises.jwt.server.domain.JwtAuthentication;
 
 import java.util.List;
 import java.util.Set;

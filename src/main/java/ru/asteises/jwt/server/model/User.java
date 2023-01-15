@@ -1,10 +1,10 @@
-package ru.asteises.jwt.server.role;
+package ru.asteises.jwt.server.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.asteises.jwt.server.enums.Roles;
+import ru.asteises.jwt.server.enums.Role;
 
 import java.util.Set;
 
@@ -18,6 +18,6 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
-    private Set<Roles> roles;
+    private Set<Role> roles;
 
 }

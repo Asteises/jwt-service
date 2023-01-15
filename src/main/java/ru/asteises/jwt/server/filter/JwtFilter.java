@@ -7,6 +7,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.GenericFilterBean;
+import ru.asteises.jwt.server.domain.JwtAuthentication;
+import ru.asteises.jwt.server.service.JwtProvider;
+import ru.asteises.jwt.server.service.JwtUtils;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -44,4 +47,5 @@ public class JwtFilter extends GenericFilterBean {
         }
         return null;
     }
+}
 

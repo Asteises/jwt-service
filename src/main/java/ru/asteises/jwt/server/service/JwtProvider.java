@@ -10,9 +10,9 @@ import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
-import ru.asteises.jwt.server.role.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import ru.asteises.jwt.server.model.User;
 
 import javax.crypto.SecretKey;
 import java.security.Key;
@@ -36,19 +36,41 @@ public class JwtProvider {
         this.jwtRefreshSecret = Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtRefreshSecret));
     }
 
+    /**
+     * Принимает объект пользователя и генерирует access токен для него
+     * <p>
+     *
+     * @param user #{@link User}
+     * @return
+     */
     public String generateAccessToken(@NonNull User user) {
+
+        // Определение жизни токена;
         final LocalDateTime now = LocalDateTime.now();
         final Instant accessExpirationInstant = now.plusMinutes(5).atZone(ZoneId.systemDefault()).toInstant();
+
+        // Библиотека, которая генерирует токены, не работает с LocalDateTime, поэтому приходится конвертировать все в старый формат Date;
         final Date accessExpiration = Date.from(accessExpirationInstant);
+
+        // Непосредственное создание токена;
         return Jwts.builder()
-                .setSubject(user.getLogin())
-                .setExpiration(accessExpiration)
-                .signWith(jwtAccessSecret)
+                .setSubject(user.getLogin()) // указываем логин;
+                .setExpiration(accessExpiration) // дату до которой токен валиден;
+                .signWith(jwtAccessSecret) // алгоритм шифрования;
+                // указываем произвольные претензии, они сохраняются в Jwts: Map<String, Object> claims;
+                // TODO
                 .claim("roles", user.getRoles())
                 .claim("firstName", user.getFirstName())
                 .compact();
     }
 
+    /**
+     * Все тоже самое, что и при создании access токена, только время жизни увеличено и не указываем претензии;
+     * <p>
+     *
+     * @param user #{@link User}
+     * @return
+     */
     public String generateRefreshToken(@NonNull User user) {
         final LocalDateTime now = LocalDateTime.now();
         final Instant refreshExpirationInstant = now.plusDays(30).atZone(ZoneId.systemDefault()).toInstant();
@@ -68,6 +90,14 @@ public class JwtProvider {
         return validateToken(refreshToken, jwtRefreshSecret);
     }
 
+    /**
+     * Валидируем токен.
+     * <p>
+     *
+     * @param token
+     * @param secret
+     * @return
+     */
     private boolean validateToken(@NonNull String token, @NonNull Key secret) {
         try {
             Jwts.parserBuilder()

@@ -2,14 +2,14 @@ package ru.asteises.jwt.server.enums;
 
 import org.springframework.security.core.GrantedAuthority;
 
-public enum Roles implements GrantedAuthority {
+public enum Role implements GrantedAuthority {
 
     ADMIN("ADMIN"),
     USER("USER");
 
     private final String value;
 
-    Roles(String value) {
+    Role(String value) {
         this.value = value;
     }
 
