@@ -24,8 +24,8 @@ public class AuthService {
 
     private final UserService userService;
 
-    // Для хранения рефреш токена используется HashMap лишь для упрощения примера.
-    // Лучше использовать какое-нибудь постоянное хранилище, например Redis.
+    // TODO Для хранения рефреш токена используется HashMap лишь для упрощения примера.
+    //  Лучше использовать какое-нибудь постоянное хранилище, например Redis.
     private final Map<String, String> refreshStorage = new HashMap<>();
 
     /*
